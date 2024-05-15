@@ -68,20 +68,18 @@ public class RaycastShooter : MonoBehaviour
             }
             else
             {
-                if (hit.transform.tag != "UI")
+                if (hit.transform.tag != "UI" && hit.transform.tag != "Wall" )
                 {
                     GameObject c = Instantiate(defaultParticles, hit.point, Quaternion.identity);
                     Destroy(c, 1);
                 }
             }
 
-            if (hit.transform.tag != "UI")
-            {
-                GameObject a = Instantiate(fireParticles, start, Quaternion.identity);
-                // Establece el objeto instanciado como hijo del objeto que tiene este script
-                a.transform.SetParent(this.transform);
-                Destroy(a, 0.3f);
-            }
+            GameObject a = Instantiate(fireParticles, start, Quaternion.identity);
+            // Establece el objeto instanciado como hijo del objeto que tiene este script
+            a.transform.SetParent(this.transform);
+            Destroy(a, 0.3f);
+            
         }
     }
 }
